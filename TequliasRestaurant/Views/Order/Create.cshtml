@@ -1,0 +1,49 @@
+﻿@model OrderViewModel
+
+@{
+    ViewBag.Title = "Create Order";
+}
+
+<h1>Create Order</h1>
+
+<div class="row">
+    @foreach (Product product in @Model.Products)
+    {
+        <div class="col-md-4">
+            <form asp-action="AddItem" method="post">
+                <div class="card" style="width: 18rem;">
+                    <img src="@Url.Content("~/images/" + product?.ImageUrl)" class="card-img-top fixed-image-height" alt="@product.Description">
+                    <div class="card-body">
+                        @product.Name - @product.Price.ToString("C")
+                        <input type="hidden" value="@product.ProductId" name="prodId" />
+
+                        <!-- Quantity with increase/decrease buttons -->
+                        <div class="input-group my-3">
+                            <button type="button" class="btn btn-outline-secondary" onclick="decreaseQty(this)">-</button>
+                            <input type="number" name="prodQty" class="form-control text-center" value="0" min="0" readonly />
+                            <button type="button" class="btn btn-outline-secondary" onclick="increaseQty(this)">+</button>
+                        </div>
+
+                        <button class="btn btn-info" type="submit">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    }
+</div>
+
+<script>// Function to increase the quantity
+    function increaseQty(button) {
+        var input = button.previousElementSibling;
+        var currentValue = parseInt(input.value);
+        input.value = currentValue + 1;
+    }
+
+    // Function to decrease the quantity but not below 0
+    function decreaseQty(button) {
+        var input = button.nextElementSibling;
+        var currentValue = parseInt(input.value);
+        if (currentValue > 0) {
+            input.value = currentValue - 1;
+        }
+    }</script>

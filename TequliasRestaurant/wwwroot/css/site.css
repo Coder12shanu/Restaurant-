@@ -1,0 +1,43 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: gray; /* Adjust the path to your image */
+    background-size: cover; /* Ensures the background covers the entire page */
+    background-repeat: no-repeat; /* Prevents repeating */
+    background-position: center center; /* Centers the image */
+    height: 100vh; /* Ensures it covers full viewport height */
+    margin: 0;
+    padding: 0;
+}
+
+.fixed-image-height {
+    height: 200px; /* Set the desired height */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    width: 100%; /* Ensures the image takes the full width of the container */
+}
+.nav-link.active {
+    font-weight: bold; /* Optional: makes active link bold */
+}
+
+.nav-link.border-bottom {
+    border-bottom: 2px solid #007bff; /* Change color to your theme's primary color */
+}
+
